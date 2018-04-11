@@ -2,12 +2,12 @@ programa
 {
 	funcao inicio()
 	{
-		inteiro c = 5
-		real altura
-		inteiro idade
+		real altura =0
+		inteiro idade =0
 		real soma_idade =0.0
 		real soma_altura = 0.0
-		inteiro alunos
+		inteiro alunos =0
+		inteiro altoes =0
 		escreva("Numero de alunos: ")
 		leia(alunos)
 		para(inteiro c=1; c<=alunos; c++){
@@ -18,15 +18,20 @@ programa
 			
 			escreva("Idade do ",c,"º Aluno\n")
 			leia(idade)
+			se(altura>0){
 			soma_idade = soma_idade + idade
+			altoes++
+			}
 			escreva("\n")
 		}
+		se(altoes>0){
 		real Ma
 		real Mi
-		Ma = soma_altura/c
+		Ma = soma_altura/altoes
 		escreva("Média de Altura: ",Ma)
-		Mi = soma_idade/c
+		Mi = soma_idade/altoes
 		escreva("\nMédia das Idades: ",Mi)
+		}
 		
 
 		
