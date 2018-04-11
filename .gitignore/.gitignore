@@ -24,7 +24,7 @@ programa
 			}
 			escreva("\n")
 		}
-		se(altoes>0){
+		se(altoes>0 e alunos>0){
 		real Ma
 		real Mi
 		Ma = soma_altura/altoes
