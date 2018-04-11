@@ -1,0 +1,35 @@
+programa
+{
+	funcao inicio()
+	{
+		inteiro c = 5
+		real altura
+		inteiro idade
+		real soma_idade =0.0
+		real soma_altura = 0.0
+		inteiro alunos
+		escreva("Numero de alunos: ")
+		leia(alunos)
+		para(inteiro c=1; c<=alunos; c++){
+			
+			escreva("Altura do Aluno ",c,"º Aluno\n")	
+			leia(altura)
+			soma_altura = soma_altura + altura
+			
+			escreva("Idade do ",c,"º Aluno\n")
+			leia(idade)
+			soma_idade = soma_idade + idade
+			escreva("\n")
+		}
+		real Ma
+		real Mi
+		Ma = soma_altura/c
+		escreva("Média de Altura: ",Ma)
+		Mi = soma_idade/c
+		escreva("\nMédia das Idades: ",Mi)
+		
+
+		
+	
+	}
+}
