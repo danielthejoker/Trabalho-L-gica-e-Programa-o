@@ -1,42 +1,22 @@
 
-programa
+ //https://www.youtube.com/watch?v=K02TnB3IGnQ&list=PLb9yvNDCid3jQAEbNoPHtPR0SWwmRSM-t
+
+ programa
 {
+	inclua biblioteca Arquivos --> a
+	
 	funcao inicio()
 	{
-		real altura =0
-		inteiro idade =0
-		real soma_idade =0.0
-		real soma_altura = 0.0
-		inteiro alunos =0
-		inteiro altoes =0
-		escreva("Numero de alunos: ")
-		leia(alunos)
-		para(inteiro c=1; c<=alunos; c++){
-			
-			escreva("Altura do Aluno ",c,"º Aluno\n")	
-			leia(altura)
-			soma_altura = soma_altura + altura
-			
-			escreva("Idade do ",c,"º Aluno\n")
-			leia(idade)
-			se(altura>0){
-			soma_idade = soma_idade + idade
-			altoes++
-			}
-			escreva("\n")
-		}
-		se(altoes>0 e alunos>0){
-		real Ma
-		real Mi
-		Ma = soma_altura/altoes
-		escreva("Média de Altura: ",Ma)
-		Mi = soma_idade/altoes
-		escreva("\nMédia das Idades: ",Mi)
-		}
 		
-
-		
-	
+		cadeia caminho_do_arquivo = "C:/Users/Daniel/.portugol/dados.txt"
+		inteiro dados = a.abrir_arquivo(caminho_do_arquivo, a.MODO_LEITURA)
+		cadeia linha1 = a.ler_linha(dados)
+		cadeia linha2 = a.ler_linha(dados)
+		cadeia linha3 = a.ler_linha(dados)
+		a.fechar_arquivo(dados)
+		escreva("Linha 1: ", linha1, "\n")
+		escreva("Linha 2: ", linha2, "\n")
+		escreva("Linha 3: ", linha3, "\n")
 	}
 }
 /* $$$ Portugol Studio $$$ 
@@ -44,7 +24,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 677; 
+ * @POSICAO-CURSOR = 87; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
