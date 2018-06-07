@@ -24,7 +24,7 @@ programa
 	}
 	funcao menuPrincipal(){
 		escreveLinha()
-		escreva("|Escolha uma das opções abaixo?      |\n")
+		escreva("|Escolha uma das opÃ§Ãµes abaixo?      |\n")
 		escreveLinha()
 		escreva("\n1 - Cadastrar Pessoa")
 		escreva("\n2 - Consultar Pessoa")
@@ -40,7 +40,7 @@ programa
 			pare
 			caso 3:
 			exibeTodosCadastrados()
-			caso 4:escreva("Até mais!")
+			caso 4:escreva("AtÃ© mais!")
 			Util.aguarde(1000)
 			pare
 		}
@@ -55,11 +55,11 @@ programa
 			escreveLinha()
 			escreva("Digite o nome da pessoa ",i+1,": \n")
 			leia(nome[i])
-			escreva("Digite o endereço: \n")
+			escreva("Digite o endereÃ§o: \n")
 			leia(end[i])
-			escreva("Digite o número de telefone: \n")
+			escreva("Digite o nÃºmero de telefone: \n")
 			leia(tel[i])
-			escreva("Digite o número do cpf: \n")
+			escreva("Digite o nÃºmero do cpf: \n")
 			leia(cpf[i])
 			escreveLinha()
 			
@@ -71,7 +71,7 @@ programa
 	funcao consultaPessoa(){
 		real numero
 		escreva("Escolha a forma de pesquisa\n")
-		escreva("1- Para inserir CPF\n2- Para inserir número de telefone\n")
+		escreva("1- Para inserir CPF\n2- Para inserir nÃºmero de telefone\n")
 		leia(opcao)
 		escolha(opcao){
 			caso 1:leia(numero)
@@ -117,19 +117,12 @@ programa
 			menuPrincipal()
 			pare
 			caso 2:
-			escreva("\nAté mais!")
+			escreva("\nAtÃ© mais!")
 			Util.aguarde(1000)
 			pare
 		}
 	}
 }
-/* $$$ Portugol Studio $$$ 
- * 
- * Esta seção do arquivo guarda informações do Portugol Studio.
- * Você pode apagá-la se estiver utilizando outro editor.
- * 
- * @POSICAO-CURSOR = 2399; 
- * @DOBRAMENTO-CODIGO = [15, 47, 50, 70, 102];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
