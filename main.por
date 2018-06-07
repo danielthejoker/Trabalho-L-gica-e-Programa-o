@@ -26,9 +26,10 @@ programa
 		escreveLinha()
 		escreva("|Escolha uma das opções abaixo?      |\n")
 		escreveLinha()
-		escreva("\n1- Cadastrar Pessoa")
-		escreva("\n2- Consultar Pessoa")
-		escreva("\n3- Exibir Todas as Pessoas Cadastradas\n")
+		escreva("\n1 - Cadastrar Pessoa")
+		escreva("\n2 - Consultar Pessoa")
+		escreva("\n3 - Exibir Todas as Pessoas Cadastradas\n")
+		escreva("4 - Sair do programa\n")
 		leia(opcao)
 		escolha(opcao){
 			caso 1:
@@ -39,6 +40,9 @@ programa
 			pare
 			caso 3:
 			exibeTodosCadastrados()
+			caso 4:escreva("Até mais!")
+			Util.aguarde(1000)
+			pare
 		}
 	}
 	funcao escreveLinha(){
@@ -105,14 +109,16 @@ programa
 		retornaMenu()
 	}
 	funcao retornaMenu(){
+		
 		escreva("Deseja retornar ao menu principal ou sair do programa?\n 1-Retornar ao menu principal \n 2-Sair do programa\n")
 		leia(opcao)
 		escolha(opcao){
 			caso 1:
 			menuPrincipal()
 			pare
-			caso 2:escreva("\nAté mais")
-			Util.aguarde(50)
+			caso 2:
+			escreva("\nAté mais!")
+			Util.aguarde(1000)
 			pare
 		}
 	}
@@ -122,8 +128,8 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 2165; 
- * @DOBRAMENTO-CODIGO = [15, 43, 46, 66, 98];
+ * @POSICAO-CURSOR = 2399; 
+ * @DOBRAMENTO-CODIGO = [15, 47, 50, 70, 102];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
