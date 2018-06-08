@@ -17,14 +17,17 @@ programa
 		zeraArrays()
 		menuPrincipal()
 		
-		inteiro arquivo = a.abrir_arquivo("cache.txt", Arquivos.MODO_LEITURA)
-		linha=a.ler_linha(arquivo)
-		escreva(linha)
-		
-		
-		
-		
-		escreva("teste")
+		se (a.arquivo_existe("cache.txt")) {
+			//inteiro arquivo = a.abrir_arquivo("cache.txt", Arquivos.MODO_LEITURA)
+			//linha=a.ler_linha(arquivo)
+			//escreva(linha)
+		}
+
+		inteiro arquivo = a.abrir_arquivo("teste.txt", Arquivos.MODO_ESCRITA)
+
+		para (inteiro i=0; i < 10; i++) {
+			a.escrever_linha("testando linha " + (nome[i]) + "\n", arquivo)
+		}
 		
 		
 		
