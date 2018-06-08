@@ -1,20 +1,36 @@
 programa
 {
 		inclua biblioteca Util
-		cadeia nome[4]
-		cadeia end[4]
-		real tel[4]
-		real cpf[4]
+		inclua biblioteca Arquivos --> a
+		inclua biblioteca Texto --> t
+		
+		cadeia nome[2]
+		cadeia end[2]
+		real tel[2]
+		real cpf[2]
 		inteiro opcao
 		real temp
+		cadeia cache
+		cadeia linha
 	funcao inicio()
 	{	
 		zeraArrays()
 		menuPrincipal()
 		
+		inteiro arquivo = a.abrir_arquivo("cache.txt", Arquivos.MODO_LEITURA)
+		linha=a.ler_linha(arquivo)
+		escreva(linha)
+		
+		
+		
+		
+		escreva("teste")
+		
+		
+		
 	}
 	funcao zeraArrays(){
-		para(inteiro i=0;i<4;i++){
+		para(inteiro i=0;i<2;i++){
 			nome[i]="a"
 			end[i]="a"
 			tel[i]=0.0
@@ -50,7 +66,7 @@ programa
 	}
 	funcao cadastraPessoa(){
 		
-		para(inteiro i=0;i<4;i++){
+		para(inteiro i=0;i<2;i++){
 			limpa()
 			escreveLinha()
 			escreva("Digite o nome da pessoa ",i+1,": \n")
@@ -75,7 +91,7 @@ programa
 		leia(opcao)
 		escolha(opcao){
 			caso 1:leia(numero)
-			para(inteiro i=0;i<4;i++){
+			para(inteiro i=0;i<2;i++){
 			se(numero==cpf[i]){
 				escreveLinha()
 				escreva("\nCadastro Encontrado:\n")
@@ -86,7 +102,7 @@ programa
 				retornaMenu()
 			pare
 			caso 2:leia(numero)
-			para(inteiro i=0;i<4;i++){
+			para(inteiro i=0;i<2;i++){
 					se(numero==tel[i]){
 						escreveLinha()
 							escreva(nome[i],"\n", cpf[i], "\n", tel[i], "\n", end[i], "\n")
@@ -101,7 +117,7 @@ programa
 		
 	}
 	funcao exibeTodosCadastrados(){
-		para(inteiro i=0;i<4;i++){
+		para(inteiro i=0;i<2;i++){
 			escreveLinha()
 			escreva("\n",nome[i], "\n", cpf[i], "\n", end[i], "\n", tel[i], "\n")
 			escreveLinha()
@@ -123,8 +139,3 @@ programa
 		}
 	}
 }
- * @PONTOS-DE-PARADA = ;
- * @SIMBOLOS-INSPECIONADOS = ;
- * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
- * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
- */
