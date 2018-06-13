@@ -12,7 +12,7 @@ programa
 		cadeia linha
 		logico fim = falso
 	funcao inicio(){
-
+		zeraArrays()
 		menuPrincipal()
 		salvaEmTexto()
 	
@@ -29,7 +29,6 @@ programa
 	}
 	funcao menuPrincipal(){
 		limpa()
-		zeraArrays()
 		escreveLinha()
 		escreva("|Escolha uma das opções abaixo?      |\n")
 		escreveLinha()
@@ -70,6 +69,7 @@ programa
 			a.fechar_arquivo(arquivo)	
 		}
 		
+		
 	}
 	funcao escreveLinha(){
 		escreva("--------------------------------------\n")
@@ -88,15 +88,16 @@ programa
 			escreva("Digite o número do cpf: \n")
 			se(cpf[i]==0){leia(cpf[i])}
 			escreveLinha()
+			salvaEmTexto()
 			escreva("Deseja adicionar mais um contato\n")
-			escreva("1-Sim\n 2-Não\n")
+			escreva("1-Sim\n2-Não\n")
 			leia(opcao)
 			escolha(opcao){
 				caso 1: cadastraPessoa()
 				limpa()
 				pare
 
-				caso 2: retornaMenu()
+				caso 2: menuPrincipal()
 				limpa()
 				pare 
 				
@@ -119,11 +120,22 @@ programa
 		escolha(opcao){
 		caso 1: leia(palavra)
 		 texto = a.abrir_arquivo("dados.txt", Arquivos.MODO_LEITURA)
-		a.ler_linha(texto)
-		linha = a.ler_linha(texto)
-		Texto.posicao_texto(palavra, linha, 0)
 		
-
+		faca{linha = a.ler_linha(texto)
+		inteiro pesquisa = Texto.posicao_texto(palavra, linha, 0)
+		se(pesquisa>-1){
+			resultado = linha
+			linha = t.substituir(resultado, ";", "\n")
+			escreveLinha()
+			escreva("Cadastro encontrado\n", linha, "\n")
+			pare
+			
+		}
+		}
+		enquanto(nao a.fim_arquivo(texto))
+		a.fechar_arquivo(texto)
+		
+		pare
 		caso 2: leia(numero)
 	     texto = a.abrir_arquivo("dados.txt", Arquivos.MODO_LEITURA)
 		
@@ -132,14 +144,27 @@ programa
 		se(pesquisa>-1){
 			resultado = linha
 			linha = t.substituir(resultado, ";", "\n")
-			escreva("Cadastro encontrado\n", linha)
+			escreveLinha()
+			escreva("\nCadastro encontrado\n", linha, "\n")
+			pare
 			
 		}
 		}
 		enquanto(nao a.fim_arquivo(texto))
+		a.fechar_arquivo(texto)
 		
+		pare
 		
-		
+		}
+		escreveLinha()
+		escreva("\nDeseja consultar mais algum cadastro?\n")
+		escreva("1-Sim\n2-Não")
+		leia(opcao)
+		escolha(opcao){
+			caso 1: consultaPessoa()
+			pare
+			caso 2: menuPrincipal()
+			pare
 		}
 		
 		
