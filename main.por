@@ -44,6 +44,7 @@ programa
 			pare
 			caso 3:
 			exibeTodosCadastrados()
+			pare
 			caso 4:
 			limpa()
 			escreva("Tem certeza, brother?\n1-Sim\n2-Não\n")
