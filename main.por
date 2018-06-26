@@ -27,7 +27,7 @@ programa
 	funcao menuPrincipal(){
 		limpa()
 		escreveLinha()
-		escreva("|Escolha uma das opções abaixo?      |\n")
+		escreva("|Escolha uma das opÃ§Ãµes abaixo?      |\n")
 		escreveLinha()
 		escreva("\n1 - Cadastrar Pessoa")
 		escreva("\n2 - Consultar Pessoa")
@@ -46,7 +46,7 @@ programa
 			exibeTodosCadastrados()
 			caso 4:
 			limpa()
-			escreva("Tem certeza, brother?\n1-Sim\n2-Não\n")
+			escreva("Tem certeza, brother?\n1-Sim\n2-NÃ£o\n")
 			leia(opcao)
 			escolha(opcao){
 			caso 1:
@@ -55,7 +55,7 @@ programa
 				pare
 				}
 				senao{limpa()
-					escreva("O arquivo nem existe parça!\n")
+					escreva("O arquivo nem existe parÃ§a!\n")
 					u.aguarde(1500)
 					limpa()
 					menuPrincipal()
@@ -69,7 +69,7 @@ programa
 			}
 			caso 5:
 			limpa()
-			escreva("\nAté mais!")
+			escreva("\nAtÃ© mais!")
 			Util.aguarde(1000)
 			fim=verdadeiro
 			pare
@@ -96,16 +96,16 @@ programa
 			escreveLinha()
 			escreva("Digite o nome da pessoa:\n")
 			leia(nome)
-			escreva("Digite o endereço:\n")
+			escreva("Digite o endereÃ§o:\n")
 			leia(end)
-			escreva("Digite o número de telefone:\n")
+			escreva("Digite o nÃºmero de telefone:\n")
 			leia(tel)
-			escreva("Digite o número do cpf:\n")
+			escreva("Digite o nÃºmero do cpf:\n")
 			leia(cpf)
 			escreveLinha()
 			salvaEmTexto()
 			escreva("Deseja adicionar mais um contato?\n")
-			escreva("1-Sim\n2-Não\n")
+			escreva("1-Sim\n2-NÃ£o\n")
 			leia(opcao)
 			escolha(opcao){
 				caso 1: cadastraPessoa()
@@ -121,7 +121,7 @@ programa
 		cadeia palavra
 		cadeia resultado
 		inteiro texto
-		escreva("Digite um parêmetro para pesquisa(ex:Nome, End, Tel, CPF, etc...)\n")
+		escreva("Digite um parÃªmetro para pesquisa(ex:Nome, End, Tel, CPF, etc...)\n")
 		leia(palavra)
 		 		se(a.arquivo_existe("dados.txt")){
 		 			texto = a.abrir_arquivo("dados.txt", Arquivos.MODO_LEITURA)
@@ -143,14 +143,14 @@ programa
 		 		}
 		 		senao{limpa()
 		 			escreveLinha()
-		 			escreva("|            Não encontrado          |\n")
+		 			escreva("|            NÃ£o encontrado          |\n")
 		 			escreveLinha()
 		 		}
 		 		
 				u.aguarde(1500)
 				limpa()
 				escreva("\nDeseja consultar mais algum cadastro?\n")
-				escreva("1-Sim\n2-Não\n")
+				escreva("1-Sim\n2-NÃ£o\n")
 				leia(opcao)
 				escolha(opcao){
 					caso 1: consultaPessoa()
@@ -177,7 +177,7 @@ programa
 			}
 			senao{limpa()
 				escreveLinha()
-				escreva("|Não existem dados a serem exibidos! |\n")
+				escreva("|NÃ£o existem dados a serem exibidos! |\n")
 				escreveLinha()
 				u.aguarde(3000)
 				limpa()
@@ -193,7 +193,7 @@ programa
 			pare
 			caso 2:
 			limpa()
-			escreva("\nAté mais!")
+			escreva("\nAtÃ© mais!")
 			Util.aguarde(1000)
 			fim=verdadeiro
 			pare
@@ -209,16 +209,3 @@ programa
 		menuPrincipal()
 	}
 }
-
-/* $$$ Portugol Studio $$$ 
- * 
- * Esta seção do arquivo guarda informações do Portugol Studio.
- * Você pode apagá-la se estiver utilizando outro editor.
- * 
- * @POSICAO-CURSOR = 305; 
- * @DOBRAMENTO-CODIGO = [20, 37, 26, 77, 90, 93, 117, 161, 186, 201];
- * @PONTOS-DE-PARADA = ;
- * @SIMBOLOS-INSPECIONADOS = ;
- * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
- * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
- */
