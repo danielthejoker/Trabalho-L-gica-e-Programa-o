@@ -14,8 +14,8 @@ programa
 		logico fim = falso
 	funcao inicio(){
 		enquanto(nao fim){
-		zeraForms()
-		menuPrincipal()
+			zeraForms()
+			menuPrincipal()
 		}
 	}
 	funcao zeraForms(){
@@ -45,8 +45,32 @@ programa
 			caso 3:
 			exibeTodosCadastrados()
 			caso 4:
-			apagaDados()
+			limpa()
+			escreva("Tem certeza, brother?\n1-Sim\n2-Não\n")
+			leia(opcao)
+			escolha(opcao){
+			caso 1:
+				se(a.arquivo_existe("dados.txt")){
+				apagaDados()
+				pare
+				}
+				senao{limpa()
+					escreva("O arquivo nem existe parça!\n")
+					u.aguarde(1500)
+					limpa()
+					menuPrincipal()
+				pare
+				}
+			caso 2:
+			retornaMenu()
+			pare
+			caso contrario:
+			pare
+			}
 			caso 5:
+			limpa()
+			escreva("\nAté mais!")
+			Util.aguarde(1000)
 			fim=verdadeiro
 			pare
 		}
@@ -85,11 +109,9 @@ programa
 			leia(opcao)
 			escolha(opcao){
 				caso 1: cadastraPessoa()
-				limpa()
 				pare
 
 				caso 2: menuPrincipal()
-				limpa()
 				pare 	
 		}
 		}
@@ -98,76 +120,69 @@ programa
 		cadeia numero
 		cadeia palavra
 		cadeia resultado
-		escreva("Escolha a forma de pesquisa\n")
-		escreva("Digite:\n1-Para pesquisa por Nome ou Endereço\n2-Para pesquisa por Telefone ou CPF\n")
-		leia(opcao)
 		inteiro texto
-		escolha(opcao){
-		caso 1: leia(palavra)
-		 texto = a.abrir_arquivo("dados.txt", Arquivos.MODO_LEITURA)
+		escreva("Digite um parêmetro para pesquisa(ex:Nome, End, Tel, CPF, etc...)\n")
+		leia(palavra)
+		 		se(a.arquivo_existe("dados.txt")){
+		 			texto = a.abrir_arquivo("dados.txt", Arquivos.MODO_LEITURA)
+		 
 		
-		faca{linha = a.ler_linha(texto)
-		inteiro pesquisa = Texto.posicao_texto(palavra, linha, 0)
-		se(pesquisa>-1){
-			resultado = linha
-			linha = t.substituir(resultado, ";", "\n")
-			escreveLinha()
-			escreva("Cadastro encontrado\n", linha, "\n")
-			pare
+				faca{linha = a.ler_linha(texto)
+					inteiro pesquisa = Texto.posicao_texto(palavra, linha, 0)
+					se(pesquisa>-1){
+					resultado = linha
+					linha = t.substituir(resultado, ";", "\n")
+					escreveLinha()
+					escreva("Cadastro encontrado\n", linha, "\n")
 			
+					}
+				}
+	
+				enquanto(nao a.fim_arquivo(texto))
+					a.fechar_arquivo(texto)
+		 		}
+		 		senao{limpa()
+		 			escreveLinha()
+		 			escreva("|            Não encontrado          |\n")
+		 			escreveLinha()
+		 		}
+		 		
+				u.aguarde(1500)
+				limpa()
+				escreva("\nDeseja consultar mais algum cadastro?\n")
+				escreva("1-Sim\n2-Não\n")
+				leia(opcao)
+				escolha(opcao){
+					caso 1: consultaPessoa()
+					pare
+					caso 2: menuPrincipal()
+					pare
 		}
-		}
-		enquanto(nao a.fim_arquivo(texto))
-		a.fechar_arquivo(texto)
-		
-		pare
-		caso 2: leia(numero)
-	     texto = a.abrir_arquivo("dados.txt", Arquivos.MODO_LEITURA)
-		
-		faca{linha = a.ler_linha(texto)
-		inteiro pesquisa = Texto.posicao_texto(numero, linha, 0)
-		se(pesquisa>-1){
-			resultado = linha
-			linha = t.substituir(resultado, ";", "\n")
-			escreveLinha()
-			escreva("\nCadastro encontrado\n", linha, "\n")
-			
-			pare	
-		}
-		}
-		enquanto(nao a.fim_arquivo(texto))
-		a.fechar_arquivo(texto)
-		
-		pare
-		}
-		escreveLinha()
-		escreva("\nDeseja consultar mais algum cadastro?\n")
-		escreva("1-Sim\n2-Não")
-		leia(opcao)
-		escolha(opcao){
-			caso 1: consultaPessoa()
-			pare
-			caso 2: menuPrincipal()
-			pare
-		}
-		
-		
 	}
 	funcao exibeTodosCadastrados(){
 		limpa()
 		cadeia numero
 		cadeia palavra
 		cadeia resultado
-			inteiro texto = a.abrir_arquivo("dados.txt", Arquivos.MODO_LEITURA)
+			se(a.arquivo_existe("dados.txt")){inteiro texto = a.abrir_arquivo("dados.txt", Arquivos.MODO_LEITURA)
 			faca{linha = a.ler_linha(texto)
 			resultado = linha
 			linha = t.substituir(resultado, ";", "\n")
 			escreveLinha()
 			escreva(linha, "\n")
-		}
-		enquanto(nao a.fim_arquivo(texto))
-		a.fechar_arquivo(texto)
-		retornaMenu()
+			}
+			enquanto(nao a.fim_arquivo(texto))
+			a.fechar_arquivo(texto)
+			retornaMenu()
+			}
+			senao{limpa()
+				escreveLinha()
+				escreva("|Não existem dados a serem exibidos! |\n")
+				escreveLinha()
+				u.aguarde(3000)
+				limpa()
+				menuPrincipal()
+			}
 	}
 	funcao retornaMenu(){
 		escreva("Deseja retornar ao menu principal ou sair do programa?\n1-Retornar ao menu principal\n2-Sair do programa\n")
@@ -177,6 +192,7 @@ programa
 			menuPrincipal()
 			pare
 			caso 2:
+			limpa()
 			escreva("\nAté mais!")
 			Util.aguarde(1000)
 			fim=verdadeiro
@@ -186,8 +202,11 @@ programa
 	funcao apagaDados(){
 		limpa()
 		a.apagar_arquivo("dados.txt")
-		escreva("Dados apagados com sucesso!")
-		retornaMenu()
+		escreveLinha()
+		escreva("|Dados apagados com sucesso!         |\n")
+		escreveLinha()
+		u.aguarde(3000)
+		menuPrincipal()
 	}
 }
 
@@ -196,8 +215,8 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 725; 
- * @DOBRAMENTO-CODIGO = [53, 66, 69, 95, 155];
+ * @POSICAO-CURSOR = 305; 
+ * @DOBRAMENTO-CODIGO = [20, 37, 26, 77, 90, 93, 117, 161, 186, 201];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
